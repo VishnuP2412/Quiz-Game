@@ -48,16 +48,3 @@ void main()
     label2:
     fclose(q);
 }
-    /*switch(x)
-    {
-        case('a'):check(a);break;
-        case('b'):check(a);break;
-        case('c'):check(a);break;
-        case('d'):check(a);break;
-        case('1'):break;
-        default:printf("Invalid");
-    }
-}
-void check(char n)
-{*/
-    
