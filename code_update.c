@@ -20,15 +20,15 @@ void update();
 void display();
 
 int p=0;
-int z=0,y=0;
+int a=0,b=0;
 void main()
 {
     printf("\n\t\t WELCOME TO THE QUIZ \t\t\t\t\t\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Rules:\n1. You will be given 4 options and you havve to press a,b,c or 1 or 2 for lifelines\n");
+    printf("Rules:\n1. You will be given 6 options: a, b, c, d, 1 and 2 where you will need to choose one.\n1 - 50-50\n2 - double dip\n");
     printf("2. Please note that you can use a lifeline only once throughout the entire game\n");
-    printf("3. For every correct option,10 points will be added and for every wrong answer 0 points will be deducted\n");
-    printf("4. You will given 10 secinds before answering each question and 5 seconds after answering the question.\n");
+    printf("3. For every correct answer,10 points will be awarded and for every wrong answer 0 points will be deducted\n");
+    printf("4. You will given 5 seconds before answering each question.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     printf("\t\t All The Best. Have Fun\t\t\t\t\t\n");
     
@@ -57,8 +57,8 @@ void enter()
 // To delay the time between answers and questions (Timer)
 void StartTimer(int s)
 {
-    time_t st=time(NULL);
-    time_t ct;
+    time_t st=time(NULL); //starting time
+    time_t ct; //current time
     do
     {
         ct=time(NULL);
@@ -80,9 +80,8 @@ int question()
         exit(1);
     }
     label1:
-    s=2;
-    StartTimer(s);
-    //for(i=1;i<=40;i++)
+    s=2;  
+    StartTimer(s); //starts the timer before printing questions
     while(!feof(q))
     {
         if(!feof(q))
@@ -94,19 +93,20 @@ int question()
          }
          else if (ch=='-')
          {
-            s=2;
-            StartTimer(s);
-            a=fgetc(stdin);
+            s=5;
+            StartTimer(s); //starts the time before asking for an answer
+            a=fgetc(stdin); //taking an input from the user
             options(a,c);
             c++;
+            printf("\n");
            break;
          }
         }
         else
-        goto label2;
+        goto label2; //if end of file, it jumps to label2
     }
-    if(!feof(q))
-    goto label1;
+    if(!feof(q)) //gets out of the loop after answering and checks if it the end of file
+    goto label1; //if not the end of file, it jumps to label1
     label2:
     fclose(q);
     return 0;
@@ -114,8 +114,8 @@ int question()
 // To check the answer given by the participant and check it
 char options(char x,int y)
 {
-    char co[10]={'a','c','a','b','c','d','a','b','d','c'};
-    char *s;
+    char co[10]={'a','c','a','b','c','d','a','b','d','c'}; // correct answers for each question
+    //char *s;
     if(x==co[y-1])
     {
         printf("Correct Answer");
@@ -125,11 +125,11 @@ char options(char x,int y)
     {
         if(x=='1')
         {
-            life1(co[y-1]);
+            life1(co[y-1]); //invoking 50-50 lifeline
         }
         else if(x=='2')
         {
-            life2(co[y-1]);
+            life2(co[y-1]); //invoking double dip lifeline
         }
         else 
         goto l1;
@@ -141,21 +141,29 @@ char options(char x,int y)
         {
          if(x=='b'||x=='c'||x=='d')
          printf("Incorrect Answer");
+         else
+         printf("invalid choice");
         }
         else if(co[y-1]=='b')
         {
          if(x=='a'||x=='c'||x=='d')
          printf("Incorrect Answer");
+         else
+         printf("invalid choice");
         }
         else if(co[y-1]=='c')
         {
          if(x=='b'||x=='a'||x=='d')
          printf("Incorrect Answer");
+         else
+         printf("invalid choice");
         }
         else if(co[y-1]=='d')
         {
          if(x=='b'||x=='c'||x=='a')
          printf("Incorrect Answer");
+         else
+         printf("invalid choice");
         }
         else
         {
@@ -169,7 +177,7 @@ char options(char x,int y)
 char life1(char correctanswer)
 {
     FILE *check=fopen("qb.txt","r");
-    if(z<1)
+    if(a<1)
     {
      char options[]={'a','b','c','d'};
      srand(time(NULL));
@@ -195,10 +203,37 @@ char life1(char correctanswer)
      }
      else
      {
-       printf("\nIncorrect Answer\n");
+       if(correctanswer=='a')
+        {
+         if(ua=='b'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='b')
+        {
+         if(ua=='a'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='c')
+        {
+         if(ua=='b'||ua=='a'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='d')
+        {
+         if(ua=='b'||ua=='c'||ua=='a')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
      }
      while(getchar()!='\n');
-     z++;
+     a++;
     }
     else
     {
@@ -212,7 +247,34 @@ char life1(char correctanswer)
         p=p+10;
      }
      else
-     printf("\n Wrong answer");
+     if(correctanswer=='a')
+        {
+         if(ua=='b'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='b')
+        {
+         if(ua=='a'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='c')
+        {
+         if(ua=='b'||ua=='a'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='d')
+        {
+         if(ua=='b'||ua=='c'||ua=='a')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
     }
     fclose(check);
 }
@@ -234,7 +296,7 @@ void lifehelp1(char options[],char correctanswer)
 // Second lifeline: Double Dip (Can answer twice for the same question)
 char life2(char correctanswer)
 {
-    if(y<1)
+    if(b<1)
     {
         char ua;
         ua=getchar();
@@ -248,7 +310,34 @@ char life2(char correctanswer)
         printf("\n Enter your option: ");
         if(ua!=correctanswer)
         {
-            printf("\n Wrong Answer");
+            if(correctanswer=='a')
+        {
+         if(ua=='b'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='b')
+        {
+         if(ua=='a'||ua=='c'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='c')
+        {
+         if(ua=='b'||ua=='a'||ua=='d')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
+        else if(correctanswer=='d')
+        {
+         if(ua=='b'||ua=='c'||ua=='a')
+         printf("Incorrect Answer");
+         else
+         printf("invalid choice");
+        }
         }
         else
         {
@@ -261,7 +350,7 @@ char life2(char correctanswer)
         printf("\nCorrect Answer");
         p=p+10;
      }
-     y++;
+     b++;
     }
     else
     {
@@ -277,7 +366,7 @@ void update()
     {
         exit(1);
     }
-    fprintf(fp,"\nYour Fotal Score: %d",p);
+    fprintf(fp,"\nYour Final Score: %d",p);
     fclose(fp);
 }
 void display()
@@ -302,6 +391,7 @@ void display()
             printf("\n");
         }
     }
+    printf("\n Good Game. Please Play Again\n");
     fclose(fp);
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
