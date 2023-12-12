@@ -11,6 +11,7 @@
 
 
 void enter();
+void StartTimer(int s);
 int question();
 char options(char x, int y);
 char life1(char correctanswer);
@@ -221,7 +222,7 @@ char life1(char correctanswer)
      {
        printf("Correct Answer");
        p=p+10;
-       ua=getchar();
+       ua='\0';
      }
      else
      {
@@ -230,12 +231,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='c'||ua=='d'||ua=='B'||ua=='C'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='b')
@@ -243,12 +244,12 @@ char life1(char correctanswer)
          if(ua=='a'||ua=='c'||ua=='d'||ua=='A'||ua=='C'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='c')
@@ -256,12 +257,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='a'||ua=='d'||ua=='B'||ua=='A'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='d')
@@ -269,12 +270,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='c'||ua=='a'||ua=='B'||ua=='C'||ua=='A')
         {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
      }
@@ -283,14 +284,14 @@ char life1(char correctanswer)
     else
     {
      printf("\nAlready Used. Cannot Use Anymore");
-     char ua=getchar();
+     char ua='\0';
      printf("\n Enter Your option: ");
-     ua=getchar();
+     ua='\0';
      if (ua==correctanswer)
      {
         printf("\n Correct Answer");
         p=p+10;
-        ua=getchar();
+        ua='\0';
      }
      else
      if(correctanswer=='a')
@@ -298,12 +299,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='c'||ua=='d'||ua=='B'||ua=='C'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='b')
@@ -311,12 +312,12 @@ char life1(char correctanswer)
          if(ua=='a'||ua=='c'||ua=='d'||ua=='A'||ua=='C'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='c')
@@ -324,12 +325,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='a'||ua=='d'||ua=='B'||ua=='A'||ua=='D')
          {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
         else if(correctanswer=='d')
@@ -337,12 +338,12 @@ char life1(char correctanswer)
          if(ua=='b'||ua=='c'||ua=='a'||ua=='B'||ua=='C'||ua=='A')
         {
           printf("Incorrect Answer");
-           ua=getchar();
+           ua='\0';
          }
          else
           {
             printf("invalid choice");
-             ua=getchar();
+             ua='\0';
           }
         }
     }
@@ -370,15 +371,15 @@ char life2(char correctanswer)
   char ua;
     if(b<1)
     {
-        ua=getchar();
+        ua='\0';
         printf("\n Enter your option: ");
-        ua=getchar();
+        ua='\0';
         if(ua!=correctanswer)
        {
         printf("\nWrong Answer. You can Choose Again.\n");
-        ua=getchar();
+        ua='\0';
         printf("\n Enter your option: ");
-        ua=getchar();
+        ua='\0';
         if(ua!=correctanswer)
         {
             if(correctanswer=='a')
@@ -426,9 +427,9 @@ char life2(char correctanswer)
     else
     {
       printf("\n Lifeline already used");
-      ua=getchar();
+      ua='\0';
       printf("\n Enter your option: ");
-      ua=getchar();
+      ua='\0';
       if(ua!=correctanswer)
       {
         if(correctanswer=='a')
